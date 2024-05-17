@@ -11,6 +11,7 @@ const sampleListings = [
       location: "Malibu",
       country: "United States",
     },
+
     {
       title: "Modern Loft in Downtown",
       description:
@@ -349,7 +350,6 @@ const sampleListings = [
     },
   ];
   
-  module.exports = { data: sampleListings };  //exporting sampleListings as object in the name of data(key)
   
 
 
@@ -587,3 +587,6 @@ const sampleListings = [
 //     country: "Costa Rica"
 //     }
 // ];
+
+
+module.exports = { data: sampleListings };  //exporting sampleListings as object in the name of data(key)

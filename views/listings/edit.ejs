@@ -4,7 +4,13 @@
     <div class="col-8 offset-2">
 
     <h3>edit your listing</h3>
-    <form method="POST" action="/listings/<%= listing._id %>?_method=PUT">
+    <form 
+        method="POST" 
+        action="/listings/<%= listing._id %>?_method=PUT" 
+        novalidate
+        class="needs-validation"
+        enctype="multipart/form-data"
+        >
 
         <div class="mb-3">
             <label for="title" class="form-label">Title</label>
@@ -13,49 +19,86 @@
             value="<%= listing.title %>"
             type="text" 
             class="form-control"
+            required
             />
+            <!-- success text -->
+            <div class="valid-feedback">
+                Title Looks good!
+            </div>
         </div>
 
         <div class="mb-3">
             <label for="description" class="form-label">Description</label>
-            <input
-            name="listing[description]"
-            value="<%= listing.description %>"
-            type="text"
-            class="form-control"
-            />
+            <textarea name="listing[description]" class="form-control" required>
+            <%= listing.description %> </textarea
+            >
+            <!-- failure text -->
+            <div class="invalid-feedback">
+                Please enter a short description
+              </div>
         </div>
+<!-- 
+        <div class="mb-3">
+            <label for="image" class="form-label">Image Filename</label>
+            <input
+                name="listing[image][filename]" 
+                value="<%= listing.image.filename %>"
+                type="text" 
+                class="form-control"
+                required
+            />
+        </div> 
+ -->
+        
+        <div class="mb-3">
+            Original listing image
+            <img src="<%= originalImageUrl %>" >
+        </div>
+
 
         <div class="mb-3">
-            <label for="image" class="form-label">image link</label>
+            <label for="image_url" class="form-label">Upload new Image </label>
             <input
-            name="listing[image]" 
-            value="<%= listing.image.url %>"
-            type="text" 
-            class="form-control"
+                name="listing[image]" 
+                type="file"
+                type="text"
+                class="form-control"
+            
             />
-        </div>
+            <!-- <div class="invalid-feedback">
+                Please enter a valid link
+            </div> -->
 
+        </div>
+        
         <div class="row">
 
-            <div class="mb-3">
+            <div class="mb-3 col-md-4">
                 <label for="price" class="form-label">price</label>
                 <input
                 name="listing[price]"
                 value="<%= listing.price %>"
-                type="text" 
+                type="number" 
                 class="form-control"
+                required
                 />
+                <div class="invalid-feedback">
+                    price should be valid 
+                </div>
             </div>
 
-            <div class="mb-3">
+            <div class="mb-3 col-md-8">
                 <label for="country" class="form-label">country</label>
                 <input
                 name="listing[country]" 
                 value="<%= listing.country %>"
                 type="text" 
                 class="form-control"
+                required
                 />
+                <div class="invalid-feedback">
+                    country name  should be valid 
+                </div>
             </div>
 
         </div>
@@ -65,10 +108,14 @@
             <label for="location" class="form-label">location</label>
             <input
             name="listing[location]"
-            <%= listing.location %>
+            value="<%= listing.location %>"
             type="text" 
             class="form-control"
+            required
             />
+            <div class="invalid-feedback">
+                location should be valid 
+            </div>
         </div>
 
         <button class="btn btn-dark edit-btn mt-3">Edit</button>
@@ -76,4 +123,5 @@
     </form>
 </div>
 </div>
+<!-- <script src="/js/script.js"></script> -->
 

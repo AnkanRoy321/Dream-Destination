@@ -1,23 +1,82 @@
+<!-- ...................adding style for search button.................. -->
+<style>
+  .search-btn{
+    background-color: brown;
+    color: #fff;
+    border-radius: 25px;
+    padding: 0 1rem 0 1rem;
+  }
+  .search-btn:hover{
+    background-color: brown;
+    color: #fff;
+  }
+  .search-btn i{
+    display: inline;
+    margin-right: 0.5rem;
+  }
+  .search-inp{
+    border-radius: 25px;
+    padding: 0.5rem 3rem 0.5rem 3rem;
+    /* font-size: ; */
+  }
+</style>
+<!-- ...................adding style for search button.................. -->
+
+
+
 <nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top"> <!-- sticky-top:stick the navbar to the top position,border-bottom:show a line at yhe bottom -->
     <div class="container-fluid">
-      <a class="navbar-brand" href="/"><i class="fa-regular fa-compass"></i></a>  <!-- compass icon -->
+      <a class="navbar-brand" href="/listings"><i class="fa-regular fa-compass"></i></a>  <!-- compass icon -->
       
       <button
       class="navbar-toggler"
         type="button"
         data-bs-toggle="collapse"
         data-bs-target="#navbarNavAltMarkup"
-        
         >
-
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-          <a class="nav-link"  href="/">Home</a>  <!--  redirect to root  -->
-          <a class="nav-link" href="/listings">ALL Listings</a>  <!-- redirect to index root -->
-          <a class="nav-link" href="/listings/new">Add new listing</a>  <!-- redirect to new root -->
+          <!-- <a class="nav-link"  href="/">Home</a>   redirect to root  -->
+          <a class="nav-link" href="/listings">Explore</a>  <!-- redirect to index root -->
+          <!-- <a class="nav-link" href="/listings/new">Add new listing</a>  redirect to new root -->
         </div>
+
+
+        <!--........................ search option...................... -->
+        <div class="navbar-nav ms-auto">
+          <form class="d-flex" role="search">
+            <input 
+              class="form-control me-2 search-inp" 
+              type="search" 
+              placeholder="Search Destination" 
+              >
+            <button class="btn search-btn" type="submit">
+              <i class="fa-solid fa-magnifying-glass"></i>Search
+            </button>
+          </form>
+        </div>
+        <!-- .........................search option.......................... -->
+
+
+        
+        <!-- -----------------------signup,login and logout navbar------------------ -->
+        <div class="navbar-nav ms-auto">
+          <a class="nav-link" href="/listings/new">Airbnb Your Home</a>  <!-- redirect to new root -->
+          <% if( !currUser){  %>
+            <a class="nav-link"  href="/signup"><b>Sign up</b></a>  <!--  redirect to root  -->
+            <a class="nav-link" href="/login"><b>login</b></a>  <!-- redirect to index root -->
+          <% }  %>
+          <% if( currUser){  %>
+              <a class="nav-link" href="/logout"><b>Logout</b></a>  <!-- redirect to new root -->
+          <% }  %>
+          
+        </div>
+        <!-- -----------------------signup,login and logout navbar------------------ -->
+
+
+
       </div>
     </div>
   </nav>

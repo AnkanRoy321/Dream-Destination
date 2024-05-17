@@ -20,6 +20,12 @@ main()
 //initDB() to initialise all data
 const initDB = async ()=>{
     await Listing.deleteMany({});  //first we delete all initially inserted data
+
+    initdata.data=initdata.data.map((obj) =>({     //add owner in each object
+      ...obj,
+      owner:"663b00e5cf8e6dab9522a179",
+    }))
+
     await Listing.insertMany(initdata.data)  //now after deleting all data we insert some data which is required as initdata object from data.js->initdata.data ,data is the key of object
     console.log("data was initialized");
 }
