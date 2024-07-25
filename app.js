@@ -1,7 +1,7 @@
-if(process.env.NODE_ENV != "production"){
-  require('dotenv').config()
+if(process.env.NODE_ENV !== "production"){
+  require('dotenv').config();
 }
-console.log(process.env.SECRET)
+console.log(process.env.SECRET);
 
 
 
@@ -73,17 +73,17 @@ const store=MongoStore.create({
   crypto:{
     secret:process.env.SECRET,
   },
-  touchAfter:24*3600,
+  touchAfter:24*3600,  //hours
 });
 
-store.on("error",()=>{
+store.on("error",()=>{  //error in mongo store
   console.log("ERROR in MONGO SESSION STORE",err);
 })
 
 //express-session
 const sessionoptions = {
-  store,
-  secret: 'musupersecretcode',
+  store,  //mongo store related information passing in session
+  secret: process.env.SECRET,
   resave: false,
   saveUninitialized: true,
   cookie: {
