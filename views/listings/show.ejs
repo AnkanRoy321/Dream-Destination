@@ -1,5 +1,14 @@
 <% layout("/layouts/boilerplate") %>
 
+<!-- mapbox -->
+ 
+<script>
+    const mapToken="<%= process.env.MAP_TOKEN %>"
+    const listing = <%- JSON.stringify(listing) %>;
+
+</script>
+
+
 <div class="row mt-3">
     <div class="col-8 offset-3">
     <h3><%= listing.title %></h3>
@@ -120,7 +129,7 @@
 
 
     <!-- ----------------------------Review Section to show--------------------------- -->
-    <p><b>All Reviews</b></p>
+    <!-- <p><b>All Reviews</b></p> -->
     
     <!-- <ul>
         <% for(review of listing.reviews){  %>
@@ -128,7 +137,10 @@
         <% } %>
     </ul> -->
     
+    <% if(listing.reviews.length>0) { %> 
     <div class="row">
+        <p><b>All Reviews</b></p>
+
     <% for(review of listing.reviews){  %>
         <div class="card col-5 ms-3 mb-3">
             <div class="card-body">
@@ -148,7 +160,31 @@
           </div>
     <% } %>
 </div>
+     <% } %>
+</div>
+    <!-- mapbox -->
+    <div class="col-6 offset-3 mb-3">
+        <h3>Where you will be</h3>
+        <div id="map"></div>
+    </div>
 
 </div>
 
-</div>
+
+
+<!-- mapbox -->
+<!-- <script>
+    let mapToken= "<%= process.env.MAP_TOKEN %>";
+    console.log(mapToken);
+	mapboxgl.accessToken = mapToken;
+    const map = new mapboxgl.Map({
+        container: 'map', // container ID
+        center: [88.3629, 22.5744], // starting position [lng, lat]. Note that lat must be set between -90 and 90
+        zoom: 9 // starting zoom
+    });
+</script> -->
+
+
+<!-- mapbox -->
+
+<script src="/js/map.js"></script>

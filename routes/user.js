@@ -37,16 +37,16 @@ router
 
 
 
-// -----------------------signup--------------------
+// -------------------------------------------------------------------------signup--------------------
 
-// get request to render a form
+//------------------- get request to render a form---------------
 // router.get("/signup",(req,res)=>{
 //     res.render("users/signup.ejs");
 // })
 
 // router.get("/signup",userController.renderSignupForm)
 
-//post request 
+//--------------------------post request 
 // router.post("/signup",wrapAsync(async (req,res)=>{
 //     try {
 //         let {username,email,password}=req.body; //fetch details
@@ -71,7 +71,7 @@ router
 
 // router.post("/signup",wrapAsync(userController.signup));
 
-// -----------------------signup--------------------
+// --------------------------------------------------------------signup--------------------
 
 
 

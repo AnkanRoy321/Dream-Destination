@@ -61,7 +61,7 @@
 
         <div class="filter">
             <div><i class="fa-brands fa-fort-awesome"></i></div>
-            <p>Castles</p>
+            <p>Breakfast</p>
         </div>
 
         <div class="filter">
@@ -76,22 +76,22 @@
 
         <div class="filter">
             <div><i class="fa-solid fa-cow"></i></div>
-            <p>farms</p>
+            <p>time spend</p>
         </div>
 
         <div class="filter">
             <div><i class="fa-solid fa-campground"></i></div>
-            <p>Camping</p>
+            <p>dinner spot</p>
         </div>
 
         <div class="filter">
             <div><i class="fa-solid fa-snowflake"></i></div>
-            <p>Arctic</p>
+            <p>Ghat</p>
         </div>
 
         <div class="filter">
             <div><i class="fa-solid fa-igloo"></i></div>
-            <p>Doms</p>
+            <p>Mandir</p>
         </div>
 
         <div class="filter">
@@ -121,7 +121,7 @@
     <!-- creating cards using bootstrap to show each place in a card -->
     <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3" >
         <% for(let listing of allListings){ %>
-            <a href="/listings/<%= listing._id %>" class="listing-link">
+            <a href="/listings/<%= listing._id %>" class="listing-link">     <!--show route-->
             <div class="card listing-card col">
                 <!-- image url used to show each image -->
                 <img src="<%= listing.image.url %>"

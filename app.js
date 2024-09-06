@@ -2,7 +2,7 @@ if(process.env.NODE_ENV !== "production"){
   require('dotenv').config();
 }
 console.log(process.env.SECRET);
-
+// require('dotenv').config();
 
 
 
@@ -53,8 +53,11 @@ app.use(express.static(path.join(__dirname,"/public")))
 
 //connecting with database
 
-// const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
 const dbUrl = process.env.ATLASDB_URL;
+console.log("MongoDB URL:", dbUrl);
+if (!dbUrl) {
+    throw new Error("MongoDB URL is undefined. Please check your environment variables.");
+}
 async function main() {
   // await mongoose.connect(MONGO_URL);
   await mongoose.connect(dbUrl);
@@ -64,6 +67,9 @@ main()
     console.log("connected to db");
 })
 .catch(err => console.log(err));
+
+
+
 
 
 
@@ -110,6 +116,8 @@ const sessionoptions = {
 //   }
 // };
 
+
+
 // //-------------------------------to validate joi schema of review create a function---------------------
 // const validateReview = (req,res,next)=>{
 // let {error} = reviewSchema.validate(req.body);   //validate req.body with listingSchema and whatever erroe generate store it inside error
@@ -129,7 +137,7 @@ const sessionoptions = {
 
 
 
-// //index route
+// //1.index route
 // app.get("/listings",wrapAsync (async (req,res)=>{
 //     let allListings = await Listing.find({})
 //     // console.log(allListings)
@@ -139,13 +147,13 @@ const sessionoptions = {
   
   
   
-//   //new route ------ Create new Listing
+//   //3.new route ------ Create new Listing
 //   app.get("/listings/new",(req,res)=>{
 //     res.render("listings/new.ejs")
 //   })
   
   
-//   //show route
+//   //2.show route
 //   app.get('/listings/:id',wrapAsync (async(req,res)=>{
 //     let {id}=req.params;
 //     const listing = await Listing.findById(id).populate("reviews");
@@ -155,7 +163,7 @@ const sessionoptions = {
   
 
 
-// //Create Route
+// //4.Create Route
 // app.post(
 //   "/listings",
 //   validateListing,  //pass as middleware
@@ -186,7 +194,7 @@ const sessionoptions = {
 // );
 
 
-// //Edit Route
+// //5.Edit Route
 // app.get(
 //   "/listings/:id/edit",
 //   wrapAsync (async(req,res)=>{
@@ -228,7 +236,7 @@ const sessionoptions = {
 
 
 
-// //delete
+////----------------------delete listings
 // app.delete(
 //   "/listings/:id",
 //   wrapAsync (async(req,res)=>{
@@ -313,6 +321,8 @@ app.use("/",userRouter);
 // );
 
 
+
+
 // //delete review route
 // app.delete(
 //   "/listings/:id/reviews/:reviewId",
@@ -358,6 +368,7 @@ app.use((err,req,res,next)=>{
   res.status(statusCode).render("error.ejs",{message});
   // res.status(statusCode).send(message);
 });
+
 
 // app.get('/',  (req, res)=> {  //root
 //   res.send('hi i am root')

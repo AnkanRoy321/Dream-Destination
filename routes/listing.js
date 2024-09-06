@@ -21,6 +21,10 @@ const upload = multer({storage})  //update destination
 
 
 
+
+
+
+
 // const validateListing = (req,res,next)=>{
 //   let {error} = listingSchema.validate(req.body);   //validate req.body with listingSchema and whatever erroe generate store it inside error
 //   if(error){
@@ -46,6 +50,7 @@ router
   //   res.send(req.file);
   // })
 
+  
 //------------------------new route ------
 router.get("/new",isLoggedIn,listingController.renderNewForm)
 
